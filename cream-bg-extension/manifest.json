@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Cream for White Backgrounds",
+  "version": "1.1.0",
+  "description": "黒に近い背景を持つ要素だけをクリーム色に置き換えます。",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": []
+}
