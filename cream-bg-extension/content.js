@@ -10,7 +10,7 @@
   const LIGHT_LUMA_THRESHOLD = 235;   // 0-255: 大きいほど“白に近い”判定が厳しい（=より白だけが対象）
   const ALPHA_MIN = 0.15;             // 透明すぎる背景は無視
   const MAX_NODES_PER_TICK = 600;     // 1回の処理上限（負荷対策）
-  const OBSERVE_MUTATIONS = false;
+  const OBSERVE_MUTATIONS = true;
 
   function isNearWhiteBackground(colorStr) {
     if (!colorStr) return false;
@@ -127,6 +127,7 @@
     mo.observe(document.documentElement, { childList: true, subtree: true });
   }
 })();
+
 
 
 
