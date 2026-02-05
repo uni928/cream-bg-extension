@@ -83,6 +83,20 @@
   // 初回実行
   scan();
 
+    // ====== ★ 追加：入場後5分間だけ、2秒おきに全体へ強制再適用 ======
+  const REPROCESS_INTERVAL_MS = 2000;
+  const REPROCESS_DURATION_MS = 5 * 60 * 1000;
+  const startedAt = Date.now();
+
+  const reprocessTimer = setInterval(() => {
+    if (Date.now() - startedAt >= REPROCESS_DURATION_MS) {
+      clearInterval(reprocessTimer);
+      return;
+    }
+    // force=true で touched を無視して再適用（全体の色変化/遅延描画対策）
+    scan();
+  }, REPROCESS_INTERVAL_MS);
+
   // SPAなどで後から増える要素にも追随
   if (OBSERVE_MUTATIONS) {
     const mo = new MutationObserver((mutations) => {
@@ -107,3 +121,4 @@
     mo.observe(document.documentElement, { childList: true, subtree: true });
   }
 })();
+
