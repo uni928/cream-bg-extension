@@ -1,4 +1,10 @@
 (() => {
+
+  // ====== ★ 追加：ローカルファイル（C:/ D:/）は対象外 ======
+  if (location.protocol === "file:") {
+    //return;
+  }
+  
   // ===== 設定 =====
   const CREAM = "rgb(255, 243, 214)"; // #FFF3D6
   const LIGHT_LUMA_THRESHOLD = 235;   // 0-255: 大きいほど“白に近い”判定が厳しい（=より白だけが対象）
@@ -121,4 +127,5 @@
     mo.observe(document.documentElement, { childList: true, subtree: true });
   }
 })();
+
 
